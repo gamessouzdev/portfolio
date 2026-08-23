@@ -91,7 +91,7 @@
 	<hr style="color: #bac1e0;">
 
 	<div class="gabri">
-		<img src="gab2.svg" alt="Foto de Gabriel Meneses">
+		<img id="gab-photo" src="gab2.svg" alt="Foto de Gabriel Meneses">
 		<div>
 			<h3><i>Dados Pessoais:</i></h3>
 			<ul>
@@ -211,13 +211,22 @@ body.matrix-theme .theme-btn {
 </style>
 
 <script>
+    const bgMusic = document.getElementById("bg-music");
+    document.addEventListener("click", function iniciarAudio() {
+        bgMusic.play();
+        document.removeEventListener("click", iniciarAudio);
+    }, { once: true });
+ 
     const themeBtn = document.getElementById("theme-toggle");
     themeBtn.addEventListener("click", () => {
         document.body.classList.toggle("matrix-theme");
+        const gabPhoto = document.getElementById("gab-photo");
         if (document.body.classList.contains("matrix-theme")) {
             themeBtn.innerText = "Tema Padrão";
+            gabPhoto.src = "repo/gab-matrix.svg"; // troque pelo nome real do seu arquivo alternativo
         } else {
             themeBtn.innerText = "matrix";
+            gabPhoto.src = "repo/gab.svg";
         }
     });
 </script>
